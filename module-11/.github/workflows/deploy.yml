@@ -29,6 +29,6 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: myNodeApp123
+        app-name: myNodeApp123   # Replace with your App Service name
         package: module-11
         publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
