@@ -1,0 +1,92 @@
+{
+  "project": {
+    "name": "Secondary School Website",
+    "description": "A modern and responsive secondary school website with student and admin features",
+    "version": "1.0.0"
+  },
+  "school": {
+    "name": "Bright Future Secondary School",
+    "motto": "Knowledge for Excellence",
+    "address": "Onitsha, Anambra, Nigeria",
+    "phone": "+2348012345678",
+    "email": "info@brightfuturesecondary.edu.ng",
+    "logo": "/images/logo.png"
+  },
+  "theme": {
+    "primaryColor": "#1E3A8A",
+    "secondaryColor": "#F59E0B",
+    "font": "Poppins",
+    "darkMode": true
+  },
+  "pages": [
+    {
+      "name": "Home",
+      "route": "/"
+    },
+    {
+      "name": "About",
+      "route": "/about"
+    },
+    {
+      "name": "Admissions",
+      "route": "/admissions"
+    },
+    {
+      "name": "Academics",
+      "route": "/academics"
+    },
+    {
+      "name": "Staff",
+      "route": "/staff"
+    },
+    {
+      "name": "Student Portal",
+      "route": "/portal"
+    },
+    {
+      "name": "Gallery",
+      "route": "/gallery"
+    },
+    {
+      "name": "News",
+      "route": "/news"
+    },
+    {
+      "name": "Contact",
+      "route": "/contact"
+    }
+  ],
+  "features": {
+    "responsiveDesign": true,
+    "seoOptimized": true,
+    "animations": true,
+    "onlineResultChecker": true,
+    "studentLogin": true,
+    "staffLogin": true,
+    "adminDashboard": true
+  },
+  "database": {
+    "type": "MongoDB",
+    "collections": [
+      "students",
+      "staff",
+      "results",
+      "news",
+      "admins"
+    ]
+  },
+  "authentication": {
+    "jwt": true,
+    "passwordEncryption": true
+  },
+  "techStack": {
+    "frontend": "React",
+    "backend": "Node.js",
+    "styling": "Tailwind CSS",
+    "database": "MongoDB"
+  },
+  "deployment": {
+    "hosting": "Vercel",
+    "domain": "www.brightfuturesecondary.edu.ng"
+  }
+}
