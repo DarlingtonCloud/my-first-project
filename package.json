@@ -1,17 +1,13 @@
 {
-  "name": "my-project",
+  "name": "bright-future-secondary-school",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Official website for Bright Future Secondary School, Onitsha, Anambra, Nigeria",
+  "main": "module-11/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx serve module-11",
+    "dev": "npx live-server module-11"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "express": "^5.2.1",
-    "react": "^19.2.6"
-  }
+  "keywords": ["school", "education", "nigeria", "anambra"],
+  "author": "DarlingtonCloud",
+  "license": "MIT"
 }

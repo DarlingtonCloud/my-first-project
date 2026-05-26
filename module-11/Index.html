@@ -3,201 +3,1137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Bright Future Secondary School - Empowering students through quality education and excellence in Onitsha, Anambra, Nigeria.">
   <title>Bright Future Secondary School</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
+    :root {
+      --navy: #1E3A8A;
+      --navy-dark: #152d6e;
+      --navy-light: #2d4fa3;
+      --gold: #F59E0B;
+      --gold-dark: #d97706;
+      --gold-light: #fbbf24;
+      --white: #ffffff;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-500: #64748b;
+      --gray-700: #334155;
+      --gray-900: #0f172a;
+      --text: #1e293b;
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.13);
+      --radius: 14px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
     }
 
-    body{
-      background:#f4f4f4;
-      color:#333;
-      line-height:1.6;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.7; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--gray-100); }
+    ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 5px; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.75);
+      font-size: 0.78rem;
+      padding: 0.45rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .topbar a { color: var(--gold-light); transition: color var(--transition); }
+    .topbar a:hover { color: var(--white); }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: box-shadow var(--transition);
+    }
+    .navbar.scrolled { box-shadow: var(--shadow-md); }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 0;
+    }
+    .nav-brand-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .nav-brand-text { line-height: 1.2; }
+    .nav-brand-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .nav-brand-motto {
+      font-size: 0.68rem;
+      color: var(--gray-500);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .nav-links a {
+      font-size: 0.87rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--navy);
+      background: var(--gray-100);
+    }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--white) !important;
+      padding: 0.55rem 1.25rem !important;
+      border-radius: 8px !important;
+    }
+    .nav-cta:hover { background: var(--gold-dark) !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: var(--transition); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      background:
+        linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(30,58,138,0.75) 100%),
+        url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1600') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245,158,11,0.2);
+      border: 1px solid rgba(245,158,11,0.4);
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+    .hero-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      font-weight: 300;
+      margin-bottom: 2.25rem;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      transition: all var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-gold { background: var(--gold); color: var(--white); box-shadow: 0 4px 20px rgba(245,158,11,0.35); }
+    .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,158,11,0.45); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.4); }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    .hero-stat {
+      padding: 1.5rem;
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+    }
+    .hero-stat-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
-    header{
-      background:#1E3A8A;
-      color:white;
-      padding:20px;
+    /* ── SECTIONS ── */
+    .section { padding: 5rem 2rem; }
+    .section-alt { background: var(--gray-50); }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      background: rgba(245,158,11,0.1);
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray-500);
+      max-width: 580px;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+    .section-header-flex {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
     }
 
-    nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    /* ── WHY CHOOSE US ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 1.5rem;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .feature-card:hover::before { transform: scaleX(1); }
+    .feature-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+    .feature-card p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.7; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .about-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+    .about-image-badge {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .about-image-badge-icon { font-size: 1.5rem; }
+    .about-image-badge-text strong { display: block; font-size: 1rem; color: var(--navy); font-weight: 700; }
+    .about-image-badge-text span { font-size: 0.72rem; color: var(--gray-500); }
+    .about-list { margin: 1.5rem 0 2rem; }
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.65rem 0;
+      font-size: 0.92rem;
+      color: var(--gray-700);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .about-list li:last-child { border-bottom: none; }
+    .about-list li::before {
+      content: '✓';
+      width: 22px; height: 22px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
     }
 
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:20px;
+    /* ── ACADEMICS ── */
+    .academics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 1.25rem;
+    }
+    .academic-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      transition: all var(--transition);
+      cursor: default;
+    }
+    .academic-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--navy); }
+    .academic-card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .academic-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .academic-card p { font-size: 0.8rem; color: var(--gray-500); line-height: 1.6; }
+
+    /* ── ADMISSIONS ── */
+    .admissions-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .admission-steps { counter-reset: step; }
+    .admission-step {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .admission-step:last-child { border-bottom: none; }
+    .step-number {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .step-content h4 {
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .step-content p { font-size: 0.87rem; color: var(--gray-500); }
+    .admission-card {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      color: white;
+      position: sticky;
+      top: 100px;
+    }
+    .admission-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+    .admission-card p { color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .admission-card .btn-gold { width: 100%; justify-content: center; }
+    .admission-info { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .admission-info-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.83rem; color: rgba(255,255,255,0.7); }
+
+    /* ── NEWS ── */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+    .news-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+    .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .news-card-img {
+      height: 180px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .news-card-body { padding: 1.5rem; }
+    .news-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      background: rgba(245,158,11,0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+    }
+    .news-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .news-card p { font-size: 0.85rem; color: var(--gray-500); line-height: 1.6; margin-bottom: 1rem; }
+    .news-card-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: var(--gray-500); }
+    .news-card-link { color: var(--navy); font-weight: 700; font-size: 0.82rem; display: flex; align-items: center; gap: 0.3rem; transition: color var(--transition); }
+    .news-card-link:hover { color: var(--gold-dark); }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .contact-item-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-item h4 { font-weight: 700; font-size: 0.85rem; color: var(--navy); margin-bottom: 0.2rem; }
+    .contact-item p, .contact-item a { font-size: 0.85rem; color: var(--gray-500); }
+    .contact-item a:hover { color: var(--navy); }
+    .contact-form {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+    .contact-form h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--gray-700); margin-bottom: 0.4rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--gray-50);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--navy); background: var(--white); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .btn-navy { background: var(--navy); color: var(--white); width: 100%; justify-content: center; }
+    .btn-navy:hover { background: var(--navy-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,58,138,0.3); }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--gray-900);
+      color: rgba(255,255,255,0.7);
+      padding: 4rem 2rem 0;
+    }
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.8; margin-bottom: 1.25rem; }
+    .footer-socials { display: flex; gap: 0.6rem; }
+    .footer-social {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      transition: background var(--transition);
+      cursor: pointer;
+    }
+    .footer-social:hover { background: var(--gold); }
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-col ul li a {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.78rem;
     }
 
-    nav a{
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      padding: 1.25rem 2rem;
+      gap: 0.25rem;
     }
-
-    .hero{
-      height:90vh;
-      background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-      url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200') center/cover;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      color:white;
-      padding:20px;
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      padding: 0.65rem 0.75rem;
+      border-radius: 8px;
+      transition: all var(--transition);
     }
+    .mobile-menu a:hover { background: var(--gray-100); color: var(--navy); }
 
-    .hero-content h1{
-      font-size:3rem;
-      margin-bottom:15px;
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px;
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all var(--transition);
+      z-index: 500;
     }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { background: var(--gold-dark); }
 
-    .hero-content p{
-      font-size:1.2rem;
-      margin-bottom:20px;
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+      .hero-actions { justify-content: center; }
+      .hero-badge { display: inline-flex; }
+      .about-grid { grid-template-columns: 1fr; }
+      .admissions-wrapper { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
     }
-
-    .btn{
-      display:inline-block;
-      background:#F59E0B;
-      color:white;
-      padding:12px 25px;
-      text-decoration:none;
-      border-radius:5px;
-      transition:0.3s;
-    }
-
-    .btn:hover{
-      background:#d97706;
-    }
-
-    section{
-      padding:60px 20px;
-      max-width:1100px;
-      margin:auto;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-      gap:20px;
-      margin-top:30px;
-    }
-
-    .card{
-      background:white;
-      padding:25px;
-      border-radius:10px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    footer{
-      background:#111827;
-      color:white;
-      text-align:center;
-      padding:20px;
-      margin-top:40px;
-    }
-
-    @media(max-width:768px){
-      nav{
-        flex-direction:column;
-      }
-
-      nav ul{
-        margin-top:15px;
-        flex-wrap:wrap;
-        justify-content:center;
-      }
-
-      .hero-content h1{
-        font-size:2rem;
-      }
+    @media (max-width: 600px) {
+      .topbar { justify-content: center; text-align: center; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
 
-  <header>
-    <nav>
-      <h2>Bright Future Secondary School</h2>
+  <!-- Top Bar -->
+  <div class="topbar">
+    <span>📍 Onitsha, Anambra State, Nigeria</span>
+    <span>
+      📞 <a href="tel:+2348012345678">+234 801 234 5678</a>
+      &nbsp;|&nbsp;
+      ✉️ <a href="mailto:info@brightfuturesecondary.edu.ng">info@brightfuturesecondary.edu.ng</a>
+    </span>
+  </div>
 
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Admissions</a></li>
-        <li><a href="#">Academics</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <div class="nav-brand-icon">🎓</div>
+      <div class="nav-brand-text">
+        <div class="nav-brand-name">Bright Future</div>
+        <div class="nav-brand-motto">Knowledge for Excellence</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#academics">Academics</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#admissions" class="nav-cta">Apply Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#academics">Academics</a>
+    <a href="#admissions">Admissions</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#admissions" style="color: var(--gold-dark); font-weight:700;">Apply Now →</a>
+  </div>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Welcome to Bright Future Secondary School</h1>
-      <p>Empowering students through quality education and excellence.</p>
-
-      <a href="#" class="btn">Apply Now</a>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">🏫 Est. 2005 · Onitsha, Anambra</div>
+        <h1>Shaping <em>Tomorrow's</em> Leaders Today</h1>
+        <p class="hero-sub">Bright Future Secondary School delivers world-class education rooted in Nigerian values — preparing students for excellence in WAEC, NECO, and beyond.</p>
+        <div class="hero-actions">
+          <a href="#admissions" class="btn btn-gold">Apply for 2026 Session</a>
+          <a href="#about" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number">98%</div>
+          <div class="hero-stat-label">WAEC Pass Rate</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">1,200+</div>
+          <div class="hero-stat-label">Students</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">20+</div>
+          <div class="hero-stat-label">Years of Excellence</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Why Choose Us?</h2>
+  <main>
 
-    <div class="cards">
-
-      <div class="card">
-        <h3>Qualified Teachers</h3>
-        <p>Experienced and dedicated educators focused on student success.</p>
+    <!-- Why Choose Us -->
+    <section class="section" id="why">
+      <div class="container">
+        <div style="text-align:center; max-width:600px; margin: 0 auto 3rem;">
+          <div class="section-tag reveal">Why Choose Us</div>
+          <h2 class="section-title reveal">Built for Student <br>Success</h2>
+          <p class="section-sub reveal" style="margin: 0 auto;">Everything we do is designed to help every student discover their potential and achieve their greatest ambitions.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon">👨‍🏫</div>
+            <h3>Qualified Teachers</h3>
+            <p>Our educators are certified, experienced, and deeply committed to individual student growth and academic excellence.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">🏛️</div>
+            <h3>Modern Facilities</h3>
+            <p>Fully-equipped science labs, ICT centers, a library, and sports facilities designed for 21st-century learning.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">🏆</div>
+            <h3>Excellent Results</h3>
+            <p>Consistent 98%+ pass rates in WAEC and NECO with multiple students earning distinctions each year.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">⚽</div>
+            <h3>Co-Curricular Activities</h3>
+            <p>Sports, debate, drama, music, and clubs that build character, leadership, and lifelong friendships.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">🔒</div>
+            <h3>Safe Environment</h3>
+            <p>A secure, inclusive campus where every student feels valued, respected, and motivated to thrive.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">👪</div>
+            <h3>Parent Partnership</h3>
+            <p>Regular parent-teacher engagement and a transparent online portal keeping families informed always.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Modern Facilities</h3>
-        <p>Well-equipped classrooms, laboratories, and ICT centers.</p>
+    <!-- About -->
+    <section class="section section-alt" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image reveal">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800" alt="Students at Bright Future Secondary School">
+            <div class="about-image-badge">
+              <div class="about-image-badge-icon">🎖️</div>
+              <div class="about-image-badge-text">
+                <strong>Award-Winning</strong>
+                <span>Best School, Anambra 2024</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="section-tag reveal">About Our School</div>
+            <h2 class="section-title reveal">A Legacy of <br>Excellence Since 2005</h2>
+            <p class="section-sub reveal" style="margin-bottom:0;">Founded with a vision to bridge the gap between quality education and accessibility, Bright Future has grown into one of Anambra's most respected secondary schools.</p>
+            <ul class="about-list reveal">
+              <li>Accredited by the Anambra State Ministry of Education</li>
+              <li>Over 2,000 successful alumni in top Nigerian universities</li>
+              <li>Dedicated guidance and counselling services</li>
+              <li>Scholarship programmes for outstanding students</li>
+              <li>Regular educational excursions and STEM workshops</li>
+            </ul>
+            <a href="#admissions" class="btn btn-gold reveal">Start Your Journey</a>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Excellent Results</h3>
-        <p>Consistent academic excellence in WAEC and NECO examinations.</p>
+    <!-- Academics -->
+    <section class="section" id="academics">
+      <div class="container">
+        <div style="text-align:center; max-width:600px; margin: 0 auto 3rem;">
+          <div class="section-tag reveal">Academics</div>
+          <h2 class="section-title reveal">A Curriculum Built <br>for the Future</h2>
+          <p class="section-sub reveal" style="margin:0 auto;">We offer a broad, balanced curriculum aligned with the Nigerian national curriculum, enhanced with STEM and vocational programmes.</p>
+        </div>
+        <div class="academics-grid">
+          <div class="academic-card reveal">
+            <div class="academic-card-icon">🔬</div>
+            <h3>Sciences</h3>
+            <p>Biology, Chemistry, Physics with well-equipped laboratory sessions.</p>
+          </div>
+          <div class="academic-card reveal">
+            <div class="academic-card-icon">📐</div>
+            <h3>Mathematics</h3>
+            <p>Core and Further Mathematics preparing students for higher education.</p>
+          </div>
+          <div class="academic-card reveal">
+            <div class="academic-card-icon">📚</div>
+            <h3>Arts & Humanities</h3>
+            <p>Literature, History, Government, and Social Studies.</p>
+          </div>
+          <div class="academic-card reveal">
+            <div class="academic-card-icon">💻</div>
+            <h3>ICT & Computing</h3>
+            <p>Modern computer science, coding basics, and digital literacy.</p>
+          </div>
+          <div class="academic-card reveal">
+            <div class="academic-card-icon">🌍</div>
+            <h3>Languages</h3>
+            <p>English, Igbo, French, and communication skills for a global world.</p>
+          </div>
+          <div class="academic-card reveal">
+            <div class="academic-card-icon">🎨</div>
+            <h3>Creative Arts</h3>
+            <p>Fine Arts, Music, Drama, and creative expression programmes.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
+    <!-- Admissions -->
+    <section class="section section-alt" id="admissions">
+      <div class="container">
+        <div class="section-tag reveal">Admissions</div>
+        <h2 class="section-title reveal">Join Our School <br>Community</h2>
+        <p class="section-sub reveal">Applications are open for the 2026/2027 academic session. Follow the simple steps below to secure your child's place.</p>
+        <div class="admissions-wrapper">
+          <div class="admission-steps reveal">
+            <div class="admission-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Submit Application Form</h4>
+                <p>Fill out the online application form or collect a physical form at the school office. No application fee required.</p>
+              </div>
+            </div>
+            <div class="admission-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Entrance Examination</h4>
+                <p>Candidates sit a qualifying exam in English and Mathematics. Date communicated after form submission.</p>
+              </div>
+            </div>
+            <div class="admission-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Interview & Assessment</h4>
+                <p>Shortlisted candidates and parents attend a brief interview and orientation session.</p>
+              </div>
+            </div>
+            <div class="admission-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Offer & Enrolment</h4>
+                <p>Successful candidates receive an offer letter and complete enrolment with required documents.</p>
+              </div>
+            </div>
+          </div>
+          <div class="admission-card reveal">
+            <h3>2026 Admissions Now Open</h3>
+            <p>Secure your child's spot in one of Anambra's finest secondary schools. Limited places available.</p>
+            <a href="#contact" class="btn btn-gold">Apply Now</a>
+            <div class="admission-info">
+              <div class="admission-info-item">📅 Application Deadline: August 30, 2026</div>
+              <div class="admission-info-item">📝 Entrance Exam: September 10, 2026</div>
+              <div class="admission-info-item">🎒 Resumption: October 6, 2026</div>
+              <div class="admission-info-item">📞 Enquiries: +234 801 234 5678</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News -->
+    <section class="section" id="news">
+      <div class="container">
+        <div class="section-header-flex">
+          <div>
+            <div class="section-tag reveal">Latest News</div>
+            <h2 class="section-title reveal">School Updates &amp; <br>Announcements</h2>
+          </div>
+        </div>
+        <div class="news-grid">
+          <div class="news-card reveal">
+            <div class="news-card-img">📣</div>
+            <div class="news-card-body">
+              <span class="news-tag">Admissions</span>
+              <h3>2026 Academic Session Admission Now Open</h3>
+              <p>Applications for JSS1 and SSS1 are now open. Early applicants get priority placement.</p>
+              <div class="news-card-meta">
+                <span>May 20, 2026</span>
+                <a href="#admissions" class="news-card-link">Read more →</a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card reveal">
+            <div class="news-card-img">🏃</div>
+            <div class="news-card-body">
+              <span class="news-tag">Sports</span>
+              <h3>Annual Inter-House Sports Competition</h3>
+              <p>The 2026 inter-house sports day is scheduled for June 14. All students encouraged to participate.</p>
+              <div class="news-card-meta">
+                <span>May 15, 2026</span>
+                <a href="#" class="news-card-link">Read more →</a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card reveal">
+            <div class="news-card-img">🏆</div>
+            <div class="news-card-body">
+              <span class="news-tag">Achievement</span>
+              <h3>Students Excel at State Mathematics Olympiad</h3>
+              <p>Three of our students placed in the top 10 at the Anambra State Mathematics Olympiad 2026.</p>
+              <div class="news-card-meta">
+                <span>May 5, 2026</span>
+                <a href="#" class="news-card-link">Read more →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <div class="section-tag reveal">Contact Us</div>
+        <h2 class="section-title reveal">Get In Touch</h2>
+        <p class="section-sub reveal">We'd love to hear from you. Reach out for admissions enquiries, general information, or to schedule a school visit.</p>
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div>
+                <h4>Address</h4>
+                <p>12 Excellence Road, GRA, Onitsha,<br>Anambra State, Nigeria</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div>
+                <h4>Phone</h4>
+                <a href="tel:+2348012345678">+234 801 234 5678</a><br>
+                <a href="tel:+2348098765432">+234 809 876 5432</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">✉️</div>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:info@brightfuturesecondary.edu.ng">info@brightfuturesecondary.edu.ng</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🕐</div>
+              <div>
+                <h4>Office Hours</h4>
+                <p>Mon – Fri: 8:00 AM – 4:00 PM<br>Sat: 9:00 AM – 1:00 PM</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form reveal">
+            <h3>Send Us a Message</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Your full name">
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+234 ...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select>
+                <option value="">Select a subject</option>
+                <option>Admissions Enquiry</option>
+                <option>School Fees</option>
+                <option>Academic Records</option>
+                <option>Schedule a Visit</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Write your message here..."></textarea>
+            </div>
+            <button class="btn btn-navy">Send Message</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">🎓 Bright Future Secondary School</div>
+        <p>Empowering students through quality education and excellence in Onitsha, Anambra, Nigeria since 2005.</p>
+        <div class="footer-socials">
+          <div class="footer-social">📘</div>
+          <div class="footer-social">🐦</div>
+          <div class="footer-social">📸</div>
+          <div class="footer-social">▶️</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Academics</h4>
+        <ul>
+          <li><a href="#">Sciences</a></li>
+          <li><a href="#">Mathematics</a></li>
+          <li><a href="#">Arts & Humanities</a></li>
+          <li><a href="#">ICT & Computing</a></li>
+          <li><a href="#">Languages</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+2348012345678">+234 801 234 5678</a></li>
+          <li><a href="mailto:info@brightfuturesecondary.edu.ng">info@brightfuture...</a></li>
+          <li><a href="#">Onitsha, Anambra</a></li>
+          <li><a href="#">Mon–Fri: 8AM–4PM</a></li>
+        </ul>
+      </div>
     </div>
-  </section>
-
-  <section>
-    <h2>Latest News</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>2026 Admission Open</h3>
-        <p>Applications are now open for the 2026 academic session.</p>
-      </div>
-
-      <div class="card">
-        <h3>Inter-House Sports</h3>
-        <p>Annual sports competition scheduled for next month.</p>
-      </div>
-
+    <div class="footer-bottom">
+      <span>© 2026 Bright Future Secondary School. All rights reserved.</span>
+      <span>Designed with ❤️ in Nigeria</span>
     </div>
-  </section>
-
-  <footer>
-    <p>
-      © 2026 Bright Future Secondary School |
-      Onitsha, Anambra, Nigeria
-    </p>
   </footer>
 
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
